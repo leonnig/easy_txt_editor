@@ -15,7 +15,7 @@ void enableRawMode()
     atexit(disableRawMode); //call the function when exit
 
     struct termios raw = orig_termios;
-    raw.c_lflag &= ~(ECHO);
+    raw.c_lflag &= ~(ECHO | ICANON);
     tcsetattr(STDERR_FILENO, TCSAFLUSH, &raw);
 }
 
